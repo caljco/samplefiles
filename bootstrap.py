@@ -13,8 +13,8 @@ import urlparse
 
 
 ############## USER INPUT #############
-cvAddr = "apiserver.arista.io"
-enrollmentToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhc2V0SUQiOjczNzM0MjY5NzI3NDkyNTIyMTMsImV4cCI6MTc0MjQzMjUzOSwia2lkIjoiMmFhZjdmMWViNDg2MzQzNSIsIm5iZiI6MTc0MjM0NjEzOSwicmVlbnJvbGxEZXZpY2VzIjpbIioiXX0.WAJGTCIWqIbJny7DfuOWzFXTlCAhKbLcbqTc5ouU5Qz8hfiGalcHbKurCfujz1h24eMeAtqi7OxOu7R6eo5uNEpCnhTKK_bSRCYffjW5EuP6Kgeo9PQFvs0QxYWXFk1TP9UAq_xLwHsLm2OAXnbUWFiK-09tW8ZN8JhZQT3l0xBDMqtuMvCbIZoFfj6u-eJgH-1bBFIAy9vxYRw82E8IgQevmT5aqH9E24BRrQ0_Nwlu_TBsX89KyhKnTkNtU-Aa6O3lPAZSATkTwA46oeETbHXulKnG0AQgz65GVkBzXbC85a1fptHxPaUeQ4ZvYMt_L7wRPtdwexHeGBlE7tnYDQ"
+cvAddr = "www.cv-prod-us-central1-b.arista.io"
+enrollmentToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhc2V0SUQiOjczNzM0MjY5NzI3NDkyNTIyMTMsImV4cCI6MTc0MjM1MTY1MCwia2lkIjoiMmFhZjdmMWViNDg2MzQzNSIsIm5iZiI6MTc0MjM0ODA1MCwicmVlbnJvbGxEZXZpY2VzIjpbIioiXX0.j7g2gkue3h2xOc9VUlZCd0QAo-uxD92mIThZvCs1sf7u9jGEHn_c6tn7WBVookqUWa8VRpQeNHzxZufz3usw-OJLsb6VroQ6RUJmNaX75_niys146q7oAnbUzHZ17Y27Hy3gFL9i0SIgZvIB_U4qL8IdHcxX9VSqiYS87XPn3ao6himLCtGJ4hqE1XSrP_yC84aY9v1N5eQzRoRSwhoYzLCjWBxEjL23Sz_SlMIbYrYgx2lgeP36KdhXbdPdUgxxAaJmtpkdrzNH4fu7vq0u_noWMC39WwhPPyreYnhbBG1rMPJ-qNollZ6bfYG0LgUFCsnyoL0_039VQTY_ebxJnQ"
 
 
 ############## CONSTANTS ##############
@@ -67,8 +67,8 @@ class BootstrapManager( object ):
          raise e
       print( "step 1 done, exchanged enrollment token for client certificates" )
 
-      os.system( "for serialNo in `FastCli -p 15 -c \"show version\" | grep 'Serial number:' | awk {'print $3'}`; do FastCli -p 15 -c \"config\"$'\n'\"hostname $serialNo\"$'\n'\"end\"; done" )
-      os.system( FastCli -p 15 -c \"config\"$'\n'\"ntp server time.google.com burst\"$'\n'\"end\" )
+#      os.system( "for serialNo in `FastCli -p 15 -c \"show version\" | grep 'Serial number:' | awk {'print $3'}`; do FastCli -p 15 -c \"config\"$'\n'\"hostname $serialNo\"$'\n'\"end\"; done" )
+#      os.system( FastCli -p 15 -c \"config\"$'\n'\"ntp server time.google.com burst\"$'\n'\"end\" )
 
 ##################################################################################
 # Step 2: get the path of stored client certificate
