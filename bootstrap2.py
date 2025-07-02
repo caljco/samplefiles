@@ -1,7 +1,6 @@
 #!/usr/bin/python
-# Copyright (c) 2021 Arista Networks, Inc.
-# Use of this source code is governed by the Apache License 2.0
-# that can be found in the COPYING file.
+# Copyright (c) 2021 Arista Networks, Inc.  All rights reserved.
+# Arista Networks, Inc. Confidential and Proprietary.
 
 import subprocess
 import requests
@@ -67,6 +66,8 @@ class BootstrapManager( object ):
          print( e.output )
          raise e
       print( "step 1 done, exchanged enrollment token for client certificates" )
+
+      os.system( "for serialNo in `FastCli -p 15 -c \"show version\" | grep 'Serial number:' | awk {'print $3'}`; do FastCli -p 15 -c \"config\"$'\n'\"hostname $serialNo\"$'\n'\"end\"; done" )
 
 ##################################################################################
 # Step 2: get the path of stored client certificate
